@@ -11,10 +11,7 @@ const App = {
 
     try {
       // get contract instance
-      console.log("TEST")
       const networkId = await web3.eth.net.getId();
-      console.log(networkId)
-      console.log("TEST2")
       const deployedNetwork = starNotaryArtifact.networks[networkId];
       console.log(deployedNetwork)
       this.meta = new web3.eth.Contract(
