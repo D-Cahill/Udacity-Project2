@@ -77,13 +77,30 @@ it('lets user2 buy a star and decreases its balance in ether', async() => {
 
 it('can add the star name and star symbol properly', async() => {
     // 1. create a Star with different tokenId
-    //2. Call the name and symbol properties in your Smart Contract and compare with the name and symbol provided
+    let instance = await StarNotary.deployed();
+    // change the private token name to public in ERC721
+    assert.equal(await instance.name.call(), "Cahill Star");
+    // change the private token symbol to public in ERC721
+    assert.equal(await instance.symbol.call(), "CSTR");
 });
 
 it('lets 2 users exchange stars', async() => {
     // 1. create 2 Stars with different tokenId
+    let instance = await StarNotary.deployed();
+
+    let tokenId1 = 7;
+    let tokenId2 = 8;
+
+    let user1 = accounts[0];
+    let user2 = accounts[1];
+    await instance.createStar('Exchange 1 Star!', tokenId1, {from: user1})
+    await instance.createStar('Exchange 2 Star!', tokenId2, {from: user2})
+
     // 2. Call the exchangeStars functions implemented in the Smart Contract
+    await instance.exchangeStars(tokenId1, tokenId2, {from: user1, gasPrice:0});
     // 3. Verify that the owners changed
+    assert.equal(await instance.ownerOf(tokenId1), user2);
+    assert.equal(await instance.ownerOf(tokenId2), user1);
 });
 
 it('lets a user transfer a star', async() => {
