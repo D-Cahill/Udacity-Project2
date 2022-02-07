@@ -136,3 +136,10 @@ compilers: {
 ---
 
 Do not use the [Old depreacted zipped starter code](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c51c4c0_project-5-starter-code/project-5-starter-code.zip)
+
+
+ERC-721 Token Name: Cahill Star
+ERC-721 Symbol: CSTR
+Truffle Version: v5.0.2
+Open Zeplin Version: 2.3
+Contract Address On Rinkeby: 0xa7008321332B0b8f7a2F53fd94f0484c6b3b5804
